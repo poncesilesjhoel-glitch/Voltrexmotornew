@@ -250,7 +250,7 @@ function negocioGuardado(): array {
 
 function negocio(): array {
     global $CONFIG;
-    $base = ['nombre' => $CONFIG['negocio_nombre'] ?: 'AUTOMAX', 'titular' => '', 'nit' => '', 'pais' => '', 'ciudad' => '',
+    $base = ['nombre' => $CONFIG['negocio_nombre'] ?: 'NITROX', 'titular' => '', 'nit' => '', 'pais' => '', 'ciudad' => '',
         'direccion' => '', 'correo' => '', 'whatsapp' => '', 'horarioTexto' => ''];
     return array_merge($base, negocioGuardado());
 }
@@ -315,9 +315,9 @@ function guardarImagen(string $dataUrl): string {
 
 /* ---------------------------------------------------------------------
    Sesión del panel admin
-   Usuario y contraseña se guardan con hash (password_hash). La primera
-   vez se entra con el usuario "admin" y la clave inicial (variable
-   ADMIN_CLAVE o config.php); el panel pide crear credenciales propias.
+   Usuario y contraseña se guardan con hash (password_hash). Se entra
+   con las credenciales iniciales (ADMIN_USUARIO / ADMIN_CLAVE o
+   config.php), que crean la cuenta y también permiten recuperarla.
    --------------------------------------------------------------------- */
 function cuentaAdmin(): array {
     $c = (array)ajuste('admin', []);
@@ -574,3 +574,35 @@ function montoDlocalABs(float $monto, string $moneda): float {
     $d = pagosConfig()['dlocal'];
     return strtoupper($moneda) === 'USD' ? round($monto * (float)$d['tasa'], 2) : $monto;
 }
+
+/* ---------------------------------------------------------------------
+   Migración única: marca NITROX y tienda en 2 secciones
+   (Piezas de automóviles / Aceites y fluidos). Solo reubica las
+   categorías antiguas; las categorías creadas a mano se conservan.
+   --------------------------------------------------------------------- */
+function migrarNitrox(): void {
+    if (ajuste('migracion_nitrox')) return;
+    global $CONFIG;
+    $n = (array)ajuste('negocio', []);
+    if (($n['nombre'] ?? '') === 'AUTOMAX') {
+        $n['nombre'] = (string)$CONFIG['negocio_nombre'];
+        guardarAjuste('negocio', $n);
+    }
+    $c = ajuste('catalogo');
+    if (is_array($c) && !empty($c['categorias'])) {
+        $mapa = ['repuestos' => 'piezas', 'filtros' => 'piezas', 'frenos' => 'piezas', 'baterias' => 'piezas',
+            'llantas' => 'piezas', 'accesorios' => 'piezas', 'aceites' => 'fluidos'];
+        $cats = ['piezas' => 'Piezas de automóviles', 'fluidos' => 'Aceites y fluidos'];
+        foreach ((array)$c['categorias'] as $k => $v) {
+            if (!isset($mapa[$k]) && !isset($cats[$k])) $cats[$k] = $v;
+        }
+        $productos = array_values((array)($c['productos'] ?? []));
+        foreach ($productos as &$p) {
+            if (isset($mapa[$p['categoria'] ?? ''])) $p['categoria'] = $mapa[$p['categoria']];
+        }
+        unset($p);
+        guardarAjuste('catalogo', ['categorias' => $cats, 'productos' => $productos]);
+    }
+    guardarAjuste('migracion_nitrox', true);
+}
+migrarNitrox();

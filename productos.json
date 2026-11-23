@@ -2,22 +2,18 @@
   "_instrucciones": [
     "Catálogo inicial de la tienda. Con el backend activo, el catálogo se administra desde el panel (admin.html › Catálogo): ahí agregas, editas y quitas productos, cambias precios y subes fotos.",
     "Este archivo solo se usa si el sitio funciona sin backend o mientras no hayas guardado el catálogo en el panel por primera vez.",
+    "La tienda tiene 2 secciones: piezas (Piezas de automóviles) y fluidos (Aceites y fluidos: aceite, líquido de frenos, refrigerante, etc.).",
     "precio: en bolivianos (Bs), solo números con punto decimal."
   ],
   "categorias": {
-    "repuestos": "Repuestos",
-    "aceites": "Aceites y lubricantes",
-    "filtros": "Filtros",
-    "frenos": "Frenos",
-    "baterias": "Baterías",
-    "llantas": "Llantas",
-    "accesorios": "Accesorios"
+    "piezas": "Piezas de automóviles",
+    "fluidos": "Aceites y fluidos"
   },
   "productos": [
     {
       "id": "aceite-sintetico-5w30",
       "nombre": "Aceite sintético 5W-30 (4 L)",
-      "categoria": "aceites",
+      "categoria": "fluidos",
       "precio": 280,
       "descripcion": "Aceite 100 % sintético para motores a gasolina modernos. Protección en arranque en frío y alta temperatura.",
       "foto": "assets/img/productos/aceite.webp",
@@ -27,7 +23,7 @@
     {
       "id": "filtro-aceite",
       "nombre": "Filtro de aceite estándar",
-      "categoria": "filtros",
+      "categoria": "piezas",
       "precio": 60,
       "descripcion": "Filtro de rosca con válvula antirretorno. Indícanos marca y modelo para confirmar compatibilidad.",
       "foto": "assets/img/productos/filtro-aceite.webp",
@@ -36,7 +32,7 @@
     {
       "id": "filtro-aire-conico",
       "nombre": "Filtro de aire cónico de alto flujo",
-      "categoria": "filtros",
+      "categoria": "piezas",
       "precio": 180,
       "descripcion": "Filtro lavable y reutilizable que mejora el flujo de aire al motor. Incluye abrazadera de montaje.",
       "foto": "assets/img/productos/filtro-aire.webp",
@@ -45,7 +41,7 @@
     {
       "id": "kit-frenos-delanteros",
       "nombre": "Kit de frenos delanteros (discos y pastillas)",
-      "categoria": "frenos",
+      "categoria": "piezas",
       "precio": 650,
       "descripcion": "Par de discos ventilados y juego de pastillas cerámicas. Frenado firme y silencioso.",
       "foto": "assets/img/productos/frenos.webp",
@@ -54,7 +50,7 @@
     {
       "id": "bateria-12v-60ah",
       "nombre": "Batería 12 V 60 Ah",
-      "categoria": "baterias",
+      "categoria": "piezas",
       "precio": 750,
       "descripcion": "Batería libre de mantenimiento con 12 meses de garantía. Instalación incluida en el taller.",
       "foto": "assets/img/productos/bateria.webp",
@@ -64,7 +60,7 @@
     {
       "id": "llanta-195-65-r15",
       "nombre": "Llanta 195/65 R15",
-      "categoria": "llantas",
+      "categoria": "piezas",
       "precio": 520,
       "descripcion": "Llanta para auto de uso urbano y carretera, con buen agarre en piso mojado.",
       "foto": "assets/img/productos/llanta.webp",
@@ -74,7 +70,7 @@
     {
       "id": "bujias-iridio",
       "nombre": "Juego de bujías de iridio (x4)",
-      "categoria": "repuestos",
+      "categoria": "piezas",
       "precio": 170,
       "descripcion": "Encendido estable y mayor vida útil que las bujías de cobre convencionales.",
       "foto": "assets/img/productos/bujias.webp",
@@ -83,7 +79,7 @@
     {
       "id": "plumillas-limpiaparabrisas",
       "nombre": "Plumillas limpiaparabrisas (par)",
-      "categoria": "accesorios",
+      "categoria": "piezas",
       "precio": 120,
       "descripcion": "Plumillas de silicona tipo flexible, barrido limpio y sin ruido. Varias medidas.",
       "foto": "assets/img/productos/plumillas.webp",

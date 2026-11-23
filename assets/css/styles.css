@@ -1,5 +1,5 @@
 /* ==========================================================
-   AUTOMAX — Hoja de estilos principal
+   NITROX — Hoja de estilos principal
    Paleta: morado oscuro, azul oscuro y acento naranja
    ========================================================== */
 :root {
@@ -737,7 +737,7 @@ main { overflow-x: clip; }
 .credito { margin: 0; }
 
 /* ==========================================================
-   v3 — AUTOMAX: tema oscuro vibrante, luces y efectos
+   v3 — NITROX: tema oscuro vibrante, luces y efectos
    Se activa con <body class="oscuro"> (inicio y reservas).
    ========================================================== */
 :root {
@@ -1201,3 +1201,12 @@ fieldset.campo legend { font-weight: 600; font-size: .9rem; margin-bottom: 8px; 
 @media (max-width: 1100px) { .admin-btn__txt { display: none; } .admin-btn { padding: 0; width: 44px; } }
 @media (max-width: 1380px) { .admin-btn__txt, .cuenta-btn__txt { display: none; } .admin-btn, .cuenta-btn { padding: 0; width: 44px; } }
 .nav .btn { white-space: nowrap; }
+
+/* ---------- Auxilio vial ---------- */
+a.auxilio-card { display: block; color: inherit; text-decoration: none; }
+.auxilio-ubicacion { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; border: 1px dashed var(--borde); border-radius: var(--radio-sm); padding: 12px 14px; }
+.auxilio-ubicacion__estado { font-size: .88rem; color: var(--texto-suave); }
+.auxilio-ubicacion__estado a { font-weight: 700; }
+.oscuro .auxilio-ubicacion { border-color: var(--linea); background: rgba(255,255,255,.03); }
+.oscuro .auxilio-ubicacion__estado { color: var(--texto-tenue); }
+.oscuro .auxilio-ubicacion__estado a { color: #ffb347; }

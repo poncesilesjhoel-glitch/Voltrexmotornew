@@ -51,12 +51,16 @@ switch ($accion) {
         $usuario = mb_strtolower(texto($in['usuario'] ?? '', 60));
         $clave = (string)($in['clave'] ?? '');
         $c = cuentaAdmin();
-        if (empty($c['hash'])) {
-            // Primer ingreso: usuario "admin" + clave inicial (ADMIN_CLAVE / config.php)
-            if ($usuario === 'admin' && $clave !== '' && hash_equals((string)$CONFIG['admin_clave'], $clave)) {
-                responder(['ok' => true, 'token' => token('admin', true), 'configurar' => true, 'usuario' => 'admin']);
-            }
-        } elseif ($usuario === mb_strtolower((string)$c['usuario']) && password_verify($clave, (string)$c['hash'])) {
+        $iniUsuario = mb_strtolower((string)($CONFIG['admin_usuario'] ?? 'admin'));
+        if ($usuario === $iniUsuario && $clave !== '' && hash_equals((string)$CONFIG['admin_clave'], $clave)) {
+            // Credenciales iniciales (config.php / ADMIN_USUARIO-ADMIN_CLAVE):
+            // crean la cuenta la primera vez y la restablecen si se olvidó la clave.
+            $c['usuario'] = $iniUsuario;
+            $c['hash'] = password_hash($clave, PASSWORD_DEFAULT);
+            guardarAjuste('admin', $c);
+            responder(['ok' => true, 'token' => token($iniUsuario, false), 'configurar' => false, 'usuario' => $iniUsuario]);
+        }
+        if (!empty($c['hash']) && $usuario === mb_strtolower((string)$c['usuario']) && password_verify($clave, (string)$c['hash'])) {
             responder(['ok' => true, 'token' => token((string)$c['usuario'], false), 'configurar' => false, 'usuario' => $c['usuario']]);
         }
         usleep(700000);

@@ -13,7 +13,7 @@ window.TALLER_CONFIG = {
 
   /* ---------- 1. Identidad del negocio ---------- */
   negocio: {
-    nombre: "AUTOMAX",            // Nombre comercial
+    nombre: "NITROX",            // Nombre comercial
     titular: "Jhoel Ponce",                   // Nombre completo del titular o razón social
     nit: "13745460",                       // NIT / RUC / identificación comercial
     pais: "Bolivia",               // País
@@ -44,9 +44,8 @@ window.TALLER_CONFIG = {
      al taller por WhatsApp (ver README). */
   API_URL: "api/",
 
-  /* Solo para "modo local" (sin backend): huella SHA-256 de la contraseña
-     del panel admin. Genera la tuya en admin.html > "Generar huella".
-     La huella incluida corresponde a la contraseña: CambiaEstaClave2026
-     ¡Cámbiala antes de publicar! */
-  ADMIN_PASSWORD_SHA256: "ed5e254969677e4f6f9aa33e2722efe444acbe4401ac82488502558c4ce37eb3"
+  /* Huella SHA-256 de la contraseña inicial del panel (la que está en
+     api/config.php). El panel con backend usa usuario y contraseña;
+     esta huella solo queda como referencia para el modo sin backend. */
+  ADMIN_PASSWORD_SHA256: "8151b091bad3520e4d2237e6d390ae7132855a385c101eaf8d583b9b24d9ded4"
 };

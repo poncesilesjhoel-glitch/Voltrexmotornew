@@ -8,14 +8,17 @@
    ===================================================================== */
 return [
 
-    // Contraseña del panel admin.html (usa una larga y única).
-    'admin_clave' => getenv('ADMIN_CLAVE') ?: 'CambiaEstaClave2026',
+    // Acceso al panel admin.html: crean la cuenta la primera vez y también
+    // permiten recuperar el acceso. En Render puedes sobrescribirlos con
+    // las variables ADMIN_USUARIO y ADMIN_CLAVE.
+    'admin_usuario' => getenv('ADMIN_USUARIO') ?: 'jhoel29',
+    'admin_clave' => getenv('ADMIN_CLAVE') ?: '@13745460',
 
     // Zona horaria del taller: https://www.php.net/manual/es/timezones.america.php
     'zona_horaria' => 'America/La_Paz',
 
     // Datos para los correos (deben coincidir con assets/js/config.js).
-    'negocio_nombre' => 'AUTOMAX',
+    'negocio_nombre' => 'NITROX',
     'correo_taller'  => getenv('CORREO_TALLER') ?: '',                        // Recibe una copia de cada reserva y mensaje
     'correo_remitente' => getenv('CORREO_REMITENTE') ?: '',                      // Ej.: no-responder@tudominio.com (debe ser de TU dominio)
     'sitio_url'      => getenv('SITIO_URL') ?: '',                        // Ej.: https://www.tudominio.com (sin / final)
