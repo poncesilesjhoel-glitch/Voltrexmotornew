@@ -10,13 +10,15 @@ Sitio en HTML, CSS y JavaScript puros (sin frameworks) con backend PHP y precios
 - **Panel `admin.html`** con usuario y contraseña propios: reservas, pedidos, catálogo con fotos, servicios y precios, horarios, medios de pago y datos del negocio.
 - Páginas legales completas: términos, envíos, reembolsos y privacidad.
 
-Publicado en Render: <https://automax.poncesiles.com>
+Publicado en Render: <https://nitrox.poncesiles.com>
+
+> El dominio personalizado se activa en **Render › Settings › Custom Domains**: agrega `nitrox.poncesiles.com` y crea en tu DNS un registro CNAME `nitrox` apuntando al destino que indique Render. Puedes conservar `automax.poncesiles.com` como dominio adicional para que los enlaces antiguos sigan funcionando. Define también la variable `SITIO_URL` con el nuevo dominio.
 
 ---
 
 ## 1. Panel de administración
 
-Entra a `https://automax.poncesiles.com/admin.html`.
+Entra a `https://nitrox.poncesiles.com/admin.html`.
 
 **Ingreso:** usuario `jhoel29` y la contraseña inicial definida en `api/config.php` (o en las variables `ADMIN_USUARIO` y `ADMIN_CLAVE` de Render). Estas credenciales crean la cuenta la primera vez y también **restablecen el acceso** si cambias la contraseña en el panel y la olvidas: quien las conozca puede recuperar el panel, así que guárdalas bien. Puedes cambiar usuario y contraseña cuando quieras en **Mi cuenta**.
 
@@ -37,7 +39,7 @@ Todo lo que guardas en el panel se ve en el sitio al instante, sin tocar código
 
 1. Pide a tu ejecutivo del BNB el acceso a la **API QR Simple (Open Banking)**. Te entregan un `accountId` y un `authorizationId`, primero de pruebas y luego de producción.
 2. En **Panel › Pagos › QR Simple — BNB** pégalos, elige el entorno (pruebas o producción), marca **Activar** y pulsa **Probar conexión**.
-3. Si el BNB te pide una URL de notificación, registra la que muestra el panel: `https://automax.poncesiles.com/api/webhook-bnb.php`. Es opcional: mientras el cliente tiene el QR abierto, el sitio consulta el estado cada 5 segundos.
+3. Si el BNB te pide una URL de notificación, registra la que muestra el panel: `https://nitrox.poncesiles.com/api/webhook-bnb.php`. Es opcional: mientras el cliente tiene el QR abierto, el sitio consulta el estado cada 5 segundos.
 
 Para cada reserva o pedido, el sitio genera un QR de un solo uso por el monto exacto. Cuando el cliente paga desde la app de su banco, la reserva se confirma sola y llegan los correos.
 
@@ -110,7 +112,7 @@ No guarda datos en el servidor: funciona incluso si la base de datos no está di
 | `DATABASE_URL` | Conexión a PostgreSQL. |
 | `ADMIN_USUARIO` | Usuario inicial del panel (por defecto `jhoel29`). |
 | `ADMIN_CLAVE` | Contraseña inicial del panel; también recupera el acceso si se olvida la contraseña cambiada. |
-| `SITIO_URL` | `https://automax.poncesiles.com`, usada en correos y para volver de los pagos. |
+| `SITIO_URL` | `https://nitrox.poncesiles.com`, usada en correos y para volver de los pagos. |
 | `CORREO_REMITENTE`, `CORREO_TALLER` | Correos (opcional; el correo del taller también se edita en el panel). |
 | `DLOCAL_API_KEY`, `DLOCAL_SECRET_KEY`, `DLOCAL_SANDBOX` | Opcional; lo recomendado es cargarlas desde el panel. |
 
