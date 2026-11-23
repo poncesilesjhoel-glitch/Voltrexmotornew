@@ -22,7 +22,7 @@ window.TALLER_CONFIG = {
     correo: "j2930741@gmail.com",                    // Correo de contacto (también recibe las reservas)
     whatsapp: "59174657211",                  // Solo números con código de país. Ej.: "59170000000"
     horarioTexto: "Lunes a viernes, de 8:00 a 17:00",
-    dominio: "https://nitrox.poncesiles.com"                 // Ej.: "https://www.tutaller.com" (para enlaces en correos)
+    dominio: "https://automax.poncesiles.com"                 // Ej.: "https://www.tutaller.com" (para enlaces en correos)
   },
 
   /* ---------- 2. Moneda y formato ---------- */
