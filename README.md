@@ -75,10 +75,14 @@ No guarda datos en el servidor: funciona incluso si la base de datos no está di
 
 ```
 /
-├── index.html  reservar.html  pedido.html  admin.html  auxilio.html  cuenta.html
-├── terminos.html  envios.html  reembolsos.html  privacidad.html  creditos.html
-├── productos.json  reservas.json   Valores iniciales (luego se editan en el panel)
+├── index.html                      Página principal (inicio)
+├── paginas/                        reservar.html  pedido.html  admin.html  auxilio.html  cuenta.html
+│                                   terminos.html  envios.html  reembolsos.html  privacidad.html  creditos.html
+├── datos-iniciales/
+│   ├── productos.json  reservas.json   Valores iniciales (luego se editan en el panel)
+├── docs/                           Informes locales (privados, no se publican)
 ├── Dockerfile                      PHP 8.3 + Apache para Render
+├── .htaccess                       Mantiene las URLs de siempre (/admin.html, /reservar.html…)
 ├── assets/
 │   ├── css/styles.css
 │   ├── img/                        Logo, fotos reales y productos
@@ -95,6 +99,8 @@ No guarda datos en el servidor: funciona incluso si la base de datos no está di
     ├── webhook-bnb.php  webhook-dlocal.php
     └── config.example.php          Plantilla de configuración (copia como config.php)
 ```
+
+> Las páginas y los JSON iniciales están en carpetas, pero `.htaccess` reescribe internamente las URLs planas de siempre (`/admin.html`, `/reservar.html`, `/productos.json`…), así que los enlaces publicados, los correos y los regresos de pago no cambian. Requiere `mod_rewrite` (ya activado en el Dockerfile de Render).
 
 ## 5. Dónde se guardan los datos
 

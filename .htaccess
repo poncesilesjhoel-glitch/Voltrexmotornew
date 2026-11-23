@@ -2,6 +2,14 @@
 Options -Indexes
 DirectoryIndex index.html
 
+# Los archivos viven en carpetas (paginas/, datos-iniciales/) pero las URLs
+# públicas siguen siendo planas: /admin.html, /reservar.html, /productos.json…
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteRule ^(admin|auxilio|creditos|cuenta|envios|pedido|privacidad|reembolsos|reservar|terminos)\.html$ paginas/$1.html [L]
+  RewriteRule ^(productos|reservas)\.json$ datos-iniciales/$1.json [L]
+</IfModule>
+
 # Fuerza HTTPS (descomenta cuando tu certificado SSL esté activo)
 # RewriteEngine On
 # RewriteCond %{HTTPS} off

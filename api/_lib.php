@@ -224,7 +224,7 @@ function guardarAjuste(string $clave, $valor): void {
 }
 
 function archivoJson(string $nombre): array {
-    $d = json_decode((string)@file_get_contents(dirname(__DIR__) . '/' . $nombre), true);
+    $d = json_decode((string)@file_get_contents(dirname(__DIR__) . '/datos-iniciales/' . $nombre), true);
     if (!is_array($d)) return [];
     unset($d['_instrucciones']);
     return $d;
