@@ -1,24 +1,24 @@
-# NITROX: sitio web con reservas, tienda, auxilio vial y panel de administración
+# VOLTREX MOTORS: sitio web con reservas, tienda, auxilio vial y panel de administración
 
 Sitio en HTML, CSS y JavaScript puros (sin frameworks) con backend PHP y precios en **bolivianos (Bs)**:
 
 - Página principal con hero animado, beneficios, servicios, tienda con carrito, auxilio vial y contacto.
 - Reservas en 5 pasos: servicio, síntomas, calendario con horas bloqueadas, datos y pago del adelanto.
-- Tienda en 2 secciones: **Piezas de automóviles** y **Aceites y fluidos** (aceite, líquido de frenos, refrigerante, etc.), con carrito, checkout y página de pedido (`pedido.html`).
+- Dos catálogos separados: **Repuestos para vehículos** (filtros, frenos, baterías, llantas, bujías…) y **Tienda de aceites y fluidos** (aceite de motor, líquido de frenos, refrigerante, ATF, etc.), con carrito, checkout y página de pedido (`pedido.html`).
 - **Auxilio vial** (`auxilio.html`): el cliente pide grúa, paso de corriente, cambio de llanta o ayuda por una falla, comparte su ubicación GPS o una dirección y la solicitud llega al WhatsApp del taller con enlace al mapa.
 - Pagos en línea con **QR Simple del BNB** (pagable desde cualquier banco), **tarjeta con dLocal Go** y, como respaldo, el **QR fijo** de tu cuenta.
 - **Panel `admin.html`** con usuario y contraseña propios: reservas, pedidos, catálogo con fotos, servicios y precios, horarios, medios de pago y datos del negocio.
 - Páginas legales completas: términos, envíos, reembolsos y privacidad.
 
-Publicado en Render: <https://automax.poncesiles.com>
+Publicado en Render: <https://voltrex.poncesiles.com>
 
-> La marca del taller es **NITROX**, pero el dominio publicado sigue siendo `automax.poncesiles.com`: no hace falta cambiar nada en Render ni en el DNS.
+> El dominio `voltrex.poncesiles.com` necesita un registro **CNAME** `voltrex` → `torke-taller.onrender.com` en el DNS de `poncesiles.com` y el dominio agregado en Render (Settings › Custom Domains). Mientras tanto, `automax.poncesiles.com` sigue funcionando.
 
 ---
 
 ## 1. Panel de administración
 
-Entra a `https://automax.poncesiles.com/admin.html`.
+Entra a `https://voltrex.poncesiles.com/admin.html`.
 
 **Ingreso:** usuario `jhoel29` y la contraseña inicial definida en `api/config.php` (o en las variables `ADMIN_USUARIO` y `ADMIN_CLAVE` de Render). Estas credenciales crean la cuenta la primera vez y también **restablecen el acceso** si cambias la contraseña en el panel y la olvidas: quien las conozca puede recuperar el panel, así que guárdalas bien. Puedes cambiar usuario y contraseña cuando quieras en **Mi cuenta**.
 
@@ -39,7 +39,7 @@ Todo lo que guardas en el panel se ve en el sitio al instante, sin tocar código
 
 1. Pide a tu ejecutivo del BNB el acceso a la **API QR Simple (Open Banking)**. Te entregan un `accountId` y un `authorizationId`, primero de pruebas y luego de producción.
 2. En **Panel › Pagos › QR Simple — BNB** pégalos, elige el entorno (pruebas o producción), marca **Activar** y pulsa **Probar conexión**.
-3. Si el BNB te pide una URL de notificación, registra la que muestra el panel: `https://automax.poncesiles.com/api/webhook-bnb.php`. Es opcional: mientras el cliente tiene el QR abierto, el sitio consulta el estado cada 5 segundos.
+3. Si el BNB te pide una URL de notificación, registra la que muestra el panel: `https://voltrex.poncesiles.com/api/webhook-bnb.php`. Es opcional: mientras el cliente tiene el QR abierto, el sitio consulta el estado cada 5 segundos.
 
 Para cada reserva o pedido, el sitio genera un QR de un solo uso por el monto exacto. Cuando el cliente paga desde la app de su banco, la reserva se confirma sola y llegan los correos.
 
@@ -112,7 +112,7 @@ No guarda datos en el servidor: funciona incluso si la base de datos no está di
 | `DATABASE_URL` | Conexión a PostgreSQL. |
 | `ADMIN_USUARIO` | Usuario inicial del panel (por defecto `jhoel29`). |
 | `ADMIN_CLAVE` | Contraseña inicial del panel; también recupera el acceso si se olvida la contraseña cambiada. |
-| `SITIO_URL` | `https://automax.poncesiles.com`, usada en correos y para volver de los pagos. |
+| `SITIO_URL` | `https://voltrex.poncesiles.com`, usada en correos y para volver de los pagos. |
 | `CORREO_REMITENTE`, `CORREO_TALLER` | Correos (opcional; el correo del taller también se edita en el panel). |
 | `DLOCAL_API_KEY`, `DLOCAL_SECRET_KEY`, `DLOCAL_SANDBOX` | Opcional; lo recomendado es cargarlas desde el panel. |
 

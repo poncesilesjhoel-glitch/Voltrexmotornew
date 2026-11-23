@@ -75,7 +75,7 @@
       "Teléfono: " + f.telefono.value.trim()
     ];
     if (f.vehiculo.value.trim()) lineas.push("Vehículo: " + f.vehiculo.value.trim());
-    lineas.push("Falla: " + f.falla.value.trim());
+    lineas.push("Qué pasó: " + f.falla.value.trim());
     if (coords) lineas.push("Ubicación GPS: " + mapaUrl());
     if (direccion) lineas.push("Dirección/referencia: " + direccion);
     var texto = lineas.join("\n");

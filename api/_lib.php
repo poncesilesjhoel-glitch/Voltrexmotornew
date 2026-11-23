@@ -250,7 +250,7 @@ function negocioGuardado(): array {
 
 function negocio(): array {
     global $CONFIG;
-    $base = ['nombre' => $CONFIG['negocio_nombre'] ?: 'NITROX', 'titular' => '', 'nit' => '', 'pais' => '', 'ciudad' => '',
+    $base = ['nombre' => $CONFIG['negocio_nombre'] ?: 'VOLTREX MOTORS', 'titular' => '', 'nit' => '', 'pais' => '', 'ciudad' => '',
         'direccion' => '', 'correo' => '', 'whatsapp' => '', 'horarioTexto' => ''];
     return array_merge($base, negocioGuardado());
 }
@@ -606,3 +606,35 @@ function migrarNitrox(): void {
     guardarAjuste('migracion_nitrox', true);
 }
 migrarNitrox();
+
+/* ---------------------------------------------------------------------
+   Migración única: marca VOLTREX MOTORS y 2 catálogos (Repuestos para
+   vehículos / Aceites y fluidos). Cambia el nombre guardado si era una
+   marca anterior, renombra las 2 categorías si conservan su nombre
+   original y agrega al catálogo guardado los productos nuevos de
+   productos.json que aún no tiene. No toca lo editado a mano.
+   --------------------------------------------------------------------- */
+function migrarVoltrex(): void {
+    if (ajuste('migracion_voltrex')) return;
+    global $CONFIG;
+    $n = (array)ajuste('negocio', []);
+    if (in_array($n['nombre'] ?? '', ['AUTOMAX', 'NITROX'], true)) {
+        $n['nombre'] = (string)$CONFIG['negocio_nombre'];
+        guardarAjuste('negocio', $n);
+    }
+    $c = ajuste('catalogo');
+    if (is_array($c)) {
+        $cats = (array)($c['categorias'] ?? []);
+        if (($cats['piezas'] ?? '') === 'Piezas de automóviles') $cats['piezas'] = 'Repuestos para vehículos';
+        if (!isset($cats['fluidos'])) $cats['fluidos'] = 'Aceites y fluidos';
+        $productos = array_values((array)($c['productos'] ?? []));
+        $ids = array_column($productos, 'id');
+        $base = archivoJson('productos.json');
+        foreach ((array)($base['productos'] ?? []) as $p) {
+            if (($p['categoria'] ?? '') === 'fluidos' && !in_array($p['id'] ?? '', $ids, true)) $productos[] = $p;
+        }
+        guardarAjuste('catalogo', ['categorias' => $cats, 'productos' => $productos]);
+    }
+    guardarAjuste('migracion_voltrex', true);
+}
+migrarVoltrex();

@@ -18,7 +18,7 @@ return [
     'zona_horaria' => 'America/La_Paz',
 
     // Datos para los correos (deben coincidir con assets/js/config.js).
-    'negocio_nombre' => 'NITROX',
+    'negocio_nombre' => 'VOLTREX MOTORS',
     'correo_taller'  => getenv('CORREO_TALLER') ?: '',                        // Recibe una copia de cada reserva y mensaje
     'correo_remitente' => getenv('CORREO_REMITENTE') ?: '',                      // Ej.: no-responder@tudominio.com (debe ser de TU dominio)
     'sitio_url'      => getenv('SITIO_URL') ?: '',                        // Ej.: https://www.tudominio.com (sin / final)

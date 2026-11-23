@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>NITROX | Taller mecánico con reservas en línea y tienda de repuestos</title>
+  <title>VOLTREX MOTORS | Taller mecánico con reservas en línea y tienda de repuestos</title>
   <meta name="description" content="Reserva la revisión de tu vehículo en línea, compra repuestos, aceites, filtros, baterías y llantas, y lleva el historial de tu auto en el celular. Apps personalizadas para talleres.">
   <meta name="theme-color" content="#1a1033">
-  <meta property="og:title" content="NITROX | Tu taller en el bolsillo de tus clientes">
+  <meta property="og:title" content="VOLTREX MOTORS | Tu taller en el bolsillo de tus clientes">
   <meta property="og:description" content="Agenda en línea 24/7, recordatorios, historial de servicios y tienda de repuestos.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="assets/img/fotos/hero.webp">
@@ -45,8 +45,8 @@
 <!-- HEADER -->
 <header class="header">
   <div class="contenedor header__fila">
-    <a class="marca" href="index.html" aria-label="NITROX, ir al inicio">
-      <img class="marca__logo" src="assets/img/logo-automax.svg" alt="NITROX" width="187" height="44">
+    <a class="marca" href="index.html" aria-label="VOLTREX MOTORS, ir al inicio">
+      <img class="marca__logo" src="assets/img/logo-automax.svg" alt="VOLTREX MOTORS" width="187" height="44">
     </a>
     <div class="header__acciones">
       <nav id="nav" class="nav" aria-label="Menú principal">
@@ -475,25 +475,45 @@
     </div>
   </section>
 
-  <!-- 5. TIENDA -->
+  <!-- 5. CATÁLOGOS: REPUESTOS + TIENDA DE ACEITES Y FLUIDOS -->
   <section id="tienda" class="seccion" aria-labelledby="tienda-titulo">
     <div class="aurora" aria-hidden="true"><span></span><span></span><span></span></div>
     <div class="contenedor">
       <div class="seccion__cabecera" data-anim="arriba">
         <span class="etiqueta">Tienda</span>
-        <h2 id="tienda-titulo" class="titulo-anim">Repuestos y accesorios <span class="grad">para tu vehículo</span></h2>
-        <p>Aceites, filtros, frenos, baterías, llantas y más. Compra en línea y retira en el taller o recíbelo en tu dirección.</p>
+        <h2 id="tienda-titulo" class="titulo-anim">Repuestos, aceites y fluidos <span class="grad">para tu vehículo</span></h2>
+        <p>Dos catálogos: repuestos para tu auto y una tienda de aceites, líquido de frenos, refrigerante y más. Compra en línea y retira en el taller o recíbelo en tu dirección.</p>
       </div>
       <div class="tienda__controles" data-anim="arriba">
         <div class="buscador">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
-          <label for="buscar" class="sr-only">Buscar productos</label>
-          <input id="buscar" type="search" placeholder="Buscar: aceite, filtro, batería…" autocomplete="off">
+          <label for="buscar" class="sr-only">Buscar en los catálogos</label>
+          <input id="buscar" type="search" placeholder="Buscar: filtro, batería, aceite, líquido de frenos…" autocomplete="off">
         </div>
-        <div class="filtros" id="filtros" role="group" aria-label="Filtrar por categoría"></div>
+        <nav class="filtros" aria-label="Ir a un catálogo">
+          <a class="filtro" href="#repuestos">Repuestos para vehículos</a>
+          <a class="filtro" href="#fluidos">Aceites y fluidos</a>
+        </nav>
       </div>
-      <div class="productos" id="productos" aria-live="polite">
-        <p class="vacio">Cargando productos…</p>
+
+      <div class="catalogo" id="repuestos" aria-labelledby="repuestos-titulo">
+        <div class="catalogo__cab" data-anim="arriba">
+          <h3 id="repuestos-titulo">Repuestos para vehículos</h3>
+          <p>Filtros, frenos, baterías, llantas, bujías y más. Indícanos marca y modelo para confirmar compatibilidad.</p>
+        </div>
+        <div class="productos" data-catalogo="repuestos" aria-live="polite">
+          <p class="vacio">Cargando productos…</p>
+        </div>
+      </div>
+
+      <div class="catalogo" id="fluidos" aria-labelledby="fluidos-titulo">
+        <div class="catalogo__cab" data-anim="arriba">
+          <h3 id="fluidos-titulo">Tienda de aceites y fluidos</h3>
+          <p>Aceite de motor, líquido de frenos, refrigerante, aceite de transmisión, aditivos y todo lo que tu auto necesita.</p>
+        </div>
+        <div class="productos" data-catalogo="fluidos" aria-live="polite">
+          <p class="vacio">Cargando productos…</p>
+        </div>
       </div>
     </div>
   </section>
@@ -709,10 +729,10 @@
   <div class="contenedor">
     <div class="footer__grid">
       <div class="footer__identidad">
-        <a class="marca" href="index.html" aria-label="NITROX, ir al inicio">
-          <img class="marca__logo" src="assets/img/logo-automax.svg" alt="NITROX" width="213" height="50" loading="lazy">
+        <a class="marca" href="index.html" aria-label="VOLTREX MOTORS, ir al inicio">
+          <img class="marca__logo" src="assets/img/logo-automax.svg" alt="VOLTREX MOTORS" width="213" height="50" loading="lazy">
         </a>
-        <p><strong data-cfg="negocio.nombre">NITROX</strong></p>
+        <p><strong data-cfg="negocio.nombre">VOLTREX MOTORS</strong></p>
         <p data-cfg-si="negocio.titular">Titular: <span data-cfg="negocio.titular"></span></p>
         <p data-cfg-si="negocio.nit">NIT/RUC: <span data-cfg="negocio.nit"></span></p>
         <p data-cfg-si="negocio.direccion"><span data-cfg="negocio.direccion"></span></p>
@@ -723,7 +743,8 @@
         <ul>
           <li><a href="#beneficios">Beneficios</a></li>
           <li><a href="#servicios">Servicios</a></li>
-          <li><a href="#tienda">Tienda</a></li>
+          <li><a href="#repuestos">Repuestos</a></li>
+          <li><a href="#fluidos">Aceites y fluidos</a></li>
           <li><a href="auxilio.html">Auxilio vial</a></li>
           <li><a href="reservar.html">Reservar revisión</a></li>
           <li><a href="cuenta.html">Mi cuenta</a></li>
@@ -750,7 +771,7 @@
       </div>
     </div>
     <div class="footer__base">
-      <span>© <span data-anio>2026</span> <span data-cfg="negocio.nombre">NITROX</span>. Todos los derechos reservados.</span>
+      <span>© <span data-anio>2026</span> <span data-cfg="negocio.nombre">VOLTREX MOTORS</span>. Todos los derechos reservados.</span>
       <span>Pagos seguros con QR y tarjeta (dLocal Go). · <a href="admin.html" rel="nofollow">Administración</a></span>
     </div>
   </div>

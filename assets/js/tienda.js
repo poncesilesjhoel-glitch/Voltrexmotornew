@@ -1,12 +1,11 @@
 /* =====================================================================
-   Tienda: catálogo (productos.json), filtros, buscador y carrito
+   Catálogos de repuestos y de aceites/fluidos (productos.json), buscador y carrito
    ===================================================================== */
 (function () {
   "use strict";
   var CLAVE = "automax_carrito";
   var productos = [];
   var categorias = {};
-  var filtro = "todas";
   var busqueda = "";
   var carrito = leer();
   var hayApi = false;
@@ -26,9 +25,13 @@
     return null;
   }
 
-  /* ---------- Catálogo ---------- */
+  /* ---------- Catálogos ----------
+     La página muestra 2 catálogos: "fluidos" (tienda de aceites y fluidos)
+     y "repuestos" (todas las demás categorías: piezas, accesorios…). */
+  var FLUIDOS = "fluidos";
+  function catalogoDe(p) { return p.categoria === FLUIDOS ? "fluidos" : "repuestos"; }
+
   function cargar() {
-    var cont = document.getElementById("productos");
     TY.cargarDatos()
       .then(function (datos) {
         hayApi = datos.api;
@@ -39,62 +42,46 @@
         // Limpia del carrito productos que ya no existen
         Object.keys(carrito).forEach(function (id) { if (!porId(id)) delete carrito[id]; });
         guardar();
-        pintarFiltros();
         pintar();
         pintarCarrito();
       })
       .catch(function () {
-        cont.innerHTML = '<p class="vacio">No se pudo cargar el catálogo. Si abriste el archivo con doble clic, usa un servidor local (ver README) o visita el sitio publicado.</p>';
+        document.querySelectorAll("[data-catalogo]").forEach(function (cont) {
+          cont.innerHTML = '<p class="vacio">No se pudo cargar el catálogo. Si abriste el archivo con doble clic, usa un servidor local (ver README) o visita el sitio publicado.</p>';
+        });
       });
   }
 
-  function pintarFiltros() {
-    var cont = document.getElementById("filtros");
-    var usadas = {};
-    productos.forEach(function (p) { usadas[p.categoria] = true; });
-    var html = '<button type="button" class="filtro" data-cat="todas" aria-pressed="true">Todo</button>';
-    Object.keys(categorias).forEach(function (k) {
-      if (usadas[k]) html += '<button type="button" class="filtro" data-cat="' + TY.escapar(k) + '" aria-pressed="false">' + TY.escapar(categorias[k]) + "</button>";
-    });
-    cont.innerHTML = html;
-    cont.addEventListener("click", function (e) {
-      var b = e.target.closest(".filtro");
-      if (!b) return;
-      filtro = b.getAttribute("data-cat");
-      cont.querySelectorAll(".filtro").forEach(function (x) { x.setAttribute("aria-pressed", x === b ? "true" : "false"); });
-      pintar();
-    });
+  function tarjeta(p, i) {
+    var disponible = p.disponible !== false;
+    return '<article class="producto foco entra" style="--i:' + i + '">' +
+      '<div class="producto__foto"><img src="' + TY.escapar(p.foto) + '" alt="' + TY.escapar(p.nombre) + '" loading="lazy" width="300" height="300">' +
+        (p.etiqueta ? '<span class="producto__etiqueta">' + TY.escapar(p.etiqueta) + "</span>" : "") + "</div>" +
+      '<div class="producto__cuerpo">' +
+        '<span class="producto__cat">' + TY.escapar(categorias[p.categoria] || p.categoria) + "</span>" +
+        "<h3>" + TY.escapar(p.nombre) + "</h3>" +
+        "<p>" + TY.escapar(p.descripcion) + "</p>" +
+        '<div class="producto__pie">' +
+          '<span class="producto__precio">' + TY.moneda(p.precio) + "</span>" +
+          (disponible
+            ? '<button type="button" class="btn btn--primario btn--sm btn--bloque producto__agregar" data-agregar="' + TY.escapar(p.id) + '">Agregar al carrito</button>'
+            : '<span class="producto__agotado">Agotado temporalmente</span>') +
+        "</div>" +
+      "</div></article>";
   }
 
   function pintar() {
-    var cont = document.getElementById("productos");
     var q = normalizar(busqueda);
-    var lista = productos.filter(function (p) {
-      var okCat = filtro === "todas" || p.categoria === filtro;
-      var texto = normalizar(p.nombre + " " + p.descripcion + " " + (categorias[p.categoria] || ""));
-      return okCat && (!q || texto.indexOf(q) > -1);
+    document.querySelectorAll("[data-catalogo]").forEach(function (cont) {
+      var cual = cont.getAttribute("data-catalogo");
+      var lista = productos.filter(function (p) {
+        var texto = normalizar(p.nombre + " " + p.descripcion + " " + (categorias[p.categoria] || ""));
+        return catalogoDe(p) === cual && (!q || texto.indexOf(q) > -1);
+      });
+      cont.innerHTML = lista.length
+        ? lista.map(tarjeta).join("")
+        : '<p class="vacio">' + (q ? "No encontramos productos con esa búsqueda en este catálogo." : "Pronto tendremos productos aquí.") + " Escríbenos y te lo conseguimos.</p>";
     });
-    if (!lista.length) {
-      cont.innerHTML = '<p class="vacio">No encontramos productos con esa búsqueda. Escríbenos y te lo conseguimos.</p>';
-      return;
-    }
-    cont.innerHTML = lista.map(function (p, i) {
-      var disponible = p.disponible !== false;
-      return '<article class="producto foco entra" style="--i:' + i + '">' +
-        '<div class="producto__foto"><img src="' + TY.escapar(p.foto) + '" alt="' + TY.escapar(p.nombre) + '" loading="lazy" width="300" height="300">' +
-          (p.etiqueta ? '<span class="producto__etiqueta">' + TY.escapar(p.etiqueta) + "</span>" : "") + "</div>" +
-        '<div class="producto__cuerpo">' +
-          '<span class="producto__cat">' + TY.escapar(categorias[p.categoria] || p.categoria) + "</span>" +
-          "<h3>" + TY.escapar(p.nombre) + "</h3>" +
-          "<p>" + TY.escapar(p.descripcion) + "</p>" +
-          '<div class="producto__pie">' +
-            '<span class="producto__precio">' + TY.moneda(p.precio) + "</span>" +
-            (disponible
-              ? '<button type="button" class="btn btn--primario btn--sm btn--bloque producto__agregar" data-agregar="' + TY.escapar(p.id) + '">Agregar al carrito</button>'
-              : '<span class="producto__agotado">Agotado temporalmente</span>') +
-          "</div>" +
-        "</div></article>";
-    }).join("");
   }
 
   /* ---------- Carrito ---------- */
@@ -253,7 +240,7 @@
   }
 
   document.addEventListener("DOMContentLoaded", function () {
-    if (!document.getElementById("productos")) return;
+    if (!document.querySelector("[data-catalogo]")) return;
     cargar();
     var buscar = document.getElementById("buscar");
     var t;

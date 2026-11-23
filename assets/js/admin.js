@@ -551,7 +551,7 @@
 
   /* =================== Negocio =================== */
   var CAMPOS_NEGOCIO = [
-    ["nombre", "Nombre comercial", "NITROX"], ["titular", "Titular o razón social", "Nombre completo o empresa"], ["nit", "NIT", ""],
+    ["nombre", "Nombre comercial", "VOLTREX MOTORS"], ["titular", "Titular o razón social", "Nombre completo o empresa"], ["nit", "NIT", ""],
     ["pais", "País", "Bolivia"], ["ciudad", "Ciudad", "Ej.: Santa Cruz de la Sierra"], ["direccion", "Dirección del taller", "Calle, número, zona"],
     ["correo", "Correo (recibe reservas y pedidos)", "taller@poncesiles.com"], ["whatsapp", "WhatsApp (con código de país)", "59170000000"],
     ["horarioTexto", "Horario (texto)", "Lunes a viernes, de 8:00 a 17:00"]

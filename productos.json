@@ -2,11 +2,11 @@
   "_instrucciones": [
     "Catálogo inicial de la tienda. Con el backend activo, el catálogo se administra desde el panel (admin.html › Catálogo): ahí agregas, editas y quitas productos, cambias precios y subes fotos.",
     "Este archivo solo se usa si el sitio funciona sin backend o mientras no hayas guardado el catálogo en el panel por primera vez.",
-    "La tienda tiene 2 secciones: piezas (Piezas de automóviles) y fluidos (Aceites y fluidos: aceite, líquido de frenos, refrigerante, etc.).",
+    "El sitio muestra 2 catálogos: Repuestos para vehículos (categoría piezas y cualquier otra que agregues) y Tienda de aceites y fluidos (categoría fluidos: aceite, líquido de frenos, refrigerante, etc.).",
     "precio: en bolivianos (Bs), solo números con punto decimal."
   ],
   "categorias": {
-    "piezas": "Piezas de automóviles",
+    "piezas": "Repuestos para vehículos",
     "fluidos": "Aceites y fluidos"
   },
   "productos": [
@@ -83,6 +83,70 @@
       "precio": 120,
       "descripcion": "Plumillas de silicona tipo flexible, barrido limpio y sin ruido. Varias medidas.",
       "foto": "assets/img/productos/plumillas.webp",
+      "disponible": true
+    },
+    {
+      "id": "liquido-frenos",
+      "nombre": "Líquido de frenos DOT 4 (500 ml)",
+      "categoria": "fluidos",
+      "precio": 55,
+      "descripcion": "Punto de ebullición alto para frenos ABS y de disco. Cámbialo cada 2 años.",
+      "foto": "assets/img/productos/liquido-frenos.svg",
+      "etiqueta": "Esencial",
+      "disponible": true
+    },
+    {
+      "id": "refrigerante",
+      "nombre": "Refrigerante anticongelante listo para usar (4 L)",
+      "categoria": "fluidos",
+      "precio": 95,
+      "descripcion": "Mezcla 50/50 que evita el sobrecalentamiento y protege el radiador contra la corrosión.",
+      "foto": "assets/img/productos/refrigerante.svg",
+      "disponible": true
+    },
+    {
+      "id": "aceite-diesel",
+      "nombre": "Aceite mineral 15W-40 para motores diésel (5 L)",
+      "categoria": "fluidos",
+      "precio": 320,
+      "descripcion": "Para camionetas y vehículos diésel. Controla el hollín y protege en trabajo pesado.",
+      "foto": "assets/img/productos/aceite-diesel.svg",
+      "disponible": true
+    },
+    {
+      "id": "atf",
+      "nombre": "Aceite de transmisión automática ATF Dexron III (1 L)",
+      "categoria": "fluidos",
+      "precio": 75,
+      "descripcion": "Para cajas automáticas y dirección hidráulica que pidan Dexron III. Revisa el manual de tu vehículo.",
+      "foto": "assets/img/productos/atf.svg",
+      "disponible": true
+    },
+    {
+      "id": "direccion-hidraulica",
+      "nombre": "Líquido de dirección hidráulica (1 L)",
+      "categoria": "fluidos",
+      "precio": 60,
+      "descripcion": "Mantiene la dirección suave y protege la bomba y las mangueras.",
+      "foto": "assets/img/productos/direccion-hidraulica.svg",
+      "disponible": true
+    },
+    {
+      "id": "limpiaparabrisas",
+      "nombre": "Líquido limpiaparabrisas concentrado (1 L)",
+      "categoria": "fluidos",
+      "precio": 25,
+      "descripcion": "Quita grasa, polvo e insectos sin dañar la pintura ni las plumillas. Rinde hasta 10 L.",
+      "foto": "assets/img/productos/limpiaparabrisas.svg",
+      "disponible": true
+    },
+    {
+      "id": "aditivo-inyectores",
+      "nombre": "Aditivo limpia inyectores para gasolina (300 ml)",
+      "categoria": "fluidos",
+      "precio": 45,
+      "descripcion": "Limpia inyectores y válvulas, mejora el arranque y reduce el consumo. Un frasco por tanque.",
+      "foto": "assets/img/productos/aditivo-inyectores.svg",
       "disponible": true
     }
   ]

@@ -1,5 +1,5 @@
 /* ==========================================================
-   NITROX — Hoja de estilos principal
+   VOLTREX MOTORS — Hoja de estilos principal
    Paleta: morado oscuro, azul oscuro y acento naranja
    ========================================================== */
 :root {
@@ -213,6 +213,11 @@ button, input, select, textarea { font: inherit; }
 .filtros { display: flex; flex-wrap: wrap; gap: 8px; }
 .filtro { border: 1px solid var(--borde); background: #fff; color: var(--morado-800); border-radius: 999px; padding: 8px 15px; font-weight: 600; font-size: .9rem; cursor: pointer; min-height: 40px; }
 .filtro[aria-pressed="true"] { background: var(--morado-800); color: #fff; border-color: var(--morado-800); }
+a.filtro { display: inline-flex; align-items: center; text-decoration: none; }
+.catalogo + .catalogo { margin-top: 56px; }
+.catalogo__cab { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 6px 20px; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid var(--borde); }
+.catalogo__cab h3 { font-size: 1.35rem; margin: 0; }
+.catalogo__cab p { margin: 0; color: var(--texto-suave); max-width: 560px; }
 .productos { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
 @media (max-width: 1060px) { .productos { grid-template-columns: repeat(3, 1fr); } }
 @media (max-width: 760px) { .productos { grid-template-columns: repeat(2, 1fr); gap: 14px; } }
@@ -737,7 +742,7 @@ main { overflow-x: clip; }
 .credito { margin: 0; }
 
 /* ==========================================================
-   v3 — NITROX: tema oscuro vibrante, luces y efectos
+   v3 — VOLTREX MOTORS: tema oscuro vibrante, luces y efectos
    Se activa con <body class="oscuro"> (inicio y reservas).
    ========================================================== */
 :root {
@@ -921,6 +926,9 @@ body.oscuro { background: var(--noche-0); color: var(--texto-claro); }
 .oscuro .producto__etiqueta { background: var(--grad-fuego); }
 .oscuro .producto:hover { box-shadow: 0 30px 60px rgba(0,0,0,.5), 0 0 0 1px rgba(255,160,80,.28); }
 .oscuro .vacio { color: var(--texto-tenue); }
+.oscuro .catalogo__cab { border-bottom-color: var(--linea); }
+.oscuro .catalogo__cab h3 { color: #fff; }
+.oscuro .catalogo__cab p { color: var(--texto-tenue); }
 
 /* ---------- CTA ---------- */
 .oscuro .cta { clip-path: polygon(0 0, 100% 8%, 100% 100%, 0 92%); padding: 140px 0; }
