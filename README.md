@@ -12,7 +12,7 @@ Sitio en HTML, CSS y JavaScript puros (sin frameworks) con backend PHP y precios
 
 Publicado en Render: <https://voltrex.poncesiles.com>
 
-> El dominio `voltrex.poncesiles.com` necesita un registro **CNAME** `voltrex` → `torke-taller.onrender.com` en el DNS de `poncesiles.com` y el dominio agregado en Render (Settings › Custom Domains). Mientras tanto, `automax.poncesiles.com` sigue funcionando.
+> El dominio `voltrex.poncesiles.com` está agregado en Render (Settings › Custom Domains) y necesita un registro **CNAME** `voltrex` → `torke-taller.onrender.com` en el DNS de `poncesiles.com` (Namecheap / cPanel › Zone Editor). El dominio anterior `automax.poncesiles.com` se quitó de Render. Mientras el DNS no esté listo, el sitio responde en <https://torke-taller.onrender.com>.
 
 ---
 
