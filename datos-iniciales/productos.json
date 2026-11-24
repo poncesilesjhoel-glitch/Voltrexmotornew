@@ -87,11 +87,11 @@
     },
     {
       "id": "liquido-frenos",
-      "nombre": "Líquido de frenos DOT 4 (500 ml)",
+      "nombre": "Líquido de frenos Bardahl DOT 3 (350 ml)",
       "categoria": "fluidos",
       "precio": 55,
-      "descripcion": "Punto de ebullición alto para frenos ABS y de disco. Cámbialo cada 2 años.",
-      "foto": "assets/img/productos/liquido-frenos.svg",
+      "descripcion": "Líquido sintético para frenos de disco y tambor que pidan DOT 3. Cámbialo cada 2 años.",
+      "foto": "assets/img/productos/liquido-frenos.jpg",
       "etiqueta": "Esencial",
       "disponible": true
     },
@@ -101,7 +101,7 @@
       "categoria": "fluidos",
       "precio": 95,
       "descripcion": "Mezcla 50/50 que evita el sobrecalentamiento y protege el radiador contra la corrosión.",
-      "foto": "assets/img/productos/refrigerante.svg",
+      "foto": "assets/img/productos/refrigerante.jpg",
       "disponible": true
     },
     {
@@ -110,7 +110,7 @@
       "categoria": "fluidos",
       "precio": 320,
       "descripcion": "Para camionetas y vehículos diésel. Controla el hollín y protege en trabajo pesado.",
-      "foto": "assets/img/productos/aceite-diesel.svg",
+      "foto": "assets/img/productos/aceite-diesel.jpg",
       "disponible": true
     },
     {
@@ -119,7 +119,7 @@
       "categoria": "fluidos",
       "precio": 75,
       "descripcion": "Para cajas automáticas y dirección hidráulica que pidan Dexron III. Revisa el manual de tu vehículo.",
-      "foto": "assets/img/productos/atf.svg",
+      "foto": "assets/img/productos/atf.jpg",
       "disponible": true
     },
     {
@@ -128,7 +128,7 @@
       "categoria": "fluidos",
       "precio": 60,
       "descripcion": "Mantiene la dirección suave y protege la bomba y las mangueras.",
-      "foto": "assets/img/productos/direccion-hidraulica.svg",
+      "foto": "assets/img/productos/direccion-hidraulica.jpg",
       "disponible": true
     },
     {
@@ -137,7 +137,7 @@
       "categoria": "fluidos",
       "precio": 25,
       "descripcion": "Quita grasa, polvo e insectos sin dañar la pintura ni las plumillas. Rinde hasta 10 L.",
-      "foto": "assets/img/productos/limpiaparabrisas.svg",
+      "foto": "assets/img/productos/limpiaparabrisas.jpg",
       "disponible": true
     },
     {
@@ -146,7 +146,7 @@
       "categoria": "fluidos",
       "precio": 45,
       "descripcion": "Limpia inyectores y válvulas, mejora el arranque y reduce el consumo. Un frasco por tanque.",
-      "foto": "assets/img/productos/aditivo-inyectores.svg",
+      "foto": "assets/img/productos/aditivo-inyectores.jpg",
       "disponible": true
     }
   ]
