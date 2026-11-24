@@ -47,5 +47,5 @@ window.TALLER_CONFIG = {
   /* Huella SHA-256 de la contraseña inicial del panel (la que está en
      api/config.php). El panel con backend usa usuario y contraseña;
      esta huella solo queda como referencia para el modo sin backend. */
-  ADMIN_PASSWORD_SHA256: "8151b091bad3520e4d2237e6d390ae7132855a385c101eaf8d583b9b24d9ded4"
+  ADMIN_PASSWORD_SHA256: "a0934ac36dd6d0cdf84638d043781e4e11c6506d5828aef8f22a597db9a933b0"
 };
